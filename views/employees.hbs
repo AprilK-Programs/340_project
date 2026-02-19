@@ -1,0 +1,29 @@
+{{!some Code taken from exploration}}
+<h1>Employee Directory</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each emp.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each emp}}
+        <tr>
+            <td>{{this.employeeID}}</td>
+            <td>{{this.employeeFirstName}}</td>
+            <td>{{this.employeeLastName}}</td>
+            <td>{{this.cid}}</td>
+        </tr>       
+        {{/each}}
+    </tbody>
+</table>

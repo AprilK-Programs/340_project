@@ -1,0 +1,141 @@
+{{!some Code taken from exploration}}
+<h1>InPatient Records</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each record.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each record}}
+        <tr>
+            <td>{{this.[inPatient ID]}}</td>
+            <td>{{this.[Trainer Name]}}</td>
+            <td>{{this.[Pokemon Name]}}</td>
+            <td>{{this.[Pokecenter Location]}}</td>
+            {{! DELETE form }}
+            <form id='delete_record_form'>
+                <input type='hidden' name='delete_record_id' value='{{this.inPatientID}}' />
+                {{!-- <input type='hidden' name='delete_record_name' value='{{this.trainerFirstName}} {{this.trainerLastName}}' /> --}}
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>       
+        {{/each}}
+
+    </tbody>
+</table>
+{{! CREATE form }}
+{{!-- have not figured out how to implement yet --}}
+<h2>Create a Record</h2>
+<h3>Currently Under Construction</h3>
+<form class='cuForm' id='create_record_form'>
+     <label for='create_record_trainer'>Trainer: </label>
+     <select name='create_record_trainer' id='create_record_trainer'>
+       
+        <option value='NULL' selected>Select a Trainer</option>
+        {{#each trainer}}
+        <option value='{{this.triainerID}}'  required>{{this.trainerID}}          
+            -
+            {{this.trainerFirstName}}
+            {{this.trainerLastName}}
+        </option>
+        {{/each}}
+     </select>
+
+    <label for='create_record_center'>PokeCenter: </label>
+    <select name='create_record_center' id='create_record_center'>
+        <option value='NULL' selected>Select a PokeCenter</option>
+        {{#each center}}
+        <option value='{{this.centerID}}' required>{{this.centerID}}
+            -
+            {{this.location}}
+        </option>
+        {{/each}}
+    </select>
+
+    <label for='create_record_pokemon'>Pokemon: </label>
+    <select name='create_record_pokemon' id='create_record_pokemon'>
+        <option value='NULL' selected>Select a Pokemon</option>
+        {{#each pokemon}}
+        <option value='{{this.pokemonID}}' required>{{this.pokemonID}}
+            -
+            {{this.species}}
+            {{this.pokemonName}}
+
+        </option>
+        {{/each}}
+    </select>
+
+    <input type='submit' />
+</form>
+
+{{! UPDATE form }}
+{{!-- have not figured out how to implement yet --}}
+<h2>Update a Record</h2>
+<h3>Currently Under Construction</h3>
+<form class='cuForm' id='update_record_form'>
+    <label for='update_record_id'>Record to Update: </label>
+    <select name='update_record_id' id='update_record_id' required>
+        <option value='NULL' selected>Select a Record</option>
+        {{#each record}}
+        <option value='{{this.inPatientID}}' required>
+            {{this.[inPatient ID]}}
+        </option>
+        {{/each}}
+    </select>
+
+    <label for='update_record_trainer'>Trainer: </label>
+    <select name='update_record_trainer' id='update_record_trainer'>
+        <option value='NULL' selected>Select a Trainer</option>
+        {{#each trainer}}
+        <option value='{{this.trainerID}}' required>
+            {{this.trainerID}}
+            -
+            {{this.trainerFirstName}}
+            {{this.trainerLastName}}
+        </option>
+        {{/each}}
+    </select>
+
+    <label for='update_record_pokemon'>Pokemon: </label>
+    <select name='update_record_pokemon' id='update_record_pokemon'>
+        <option value='NULL' selected>Select a Pokemon</option>
+        {{#each pokemon}}
+        <option value='{{this.pokemonID}}' required>
+            {{this.pokemonID}}
+            -
+            {{this.species}}
+            {{this.pokemonName}}
+        </option>
+        {{/each}}
+    </select>
+
+    <label for='update_record_center'>PokeCenter: </label>
+    <select name='update_record_center' id='update_record_center'>
+        <option value='NULL' selected>Select a PokeCenter</option>
+        {{#each center}}
+        <option value='{{this.centerID}}' required>
+            {{this.centerID}}
+            -
+            {{this.location}}
+        </option>
+        {{/each}}
+    </select>
+
+    <input type='submit' />
+</form>

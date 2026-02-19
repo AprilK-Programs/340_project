@@ -1,0 +1,27 @@
+{{!some Code taken from exploration}}
+<h1>PokeCenter Directory</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each center.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each center}}
+        <tr>
+            <td>{{this.centerID}}</td>
+            <td>{{this.location}}</td>
+        </tr>       
+        {{/each}}
+    </tbody>
+</table>

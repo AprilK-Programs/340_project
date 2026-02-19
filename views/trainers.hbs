@@ -1,0 +1,29 @@
+{{!some Code taken from exploration}}
+<h1>Trainer Directory</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each trainer.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each trainer}}
+        <tr>
+            <td>{{this.trainerID}}</td>
+            <td>{{this.trainerFirstName}}</td>
+            <td>{{this.trainerLastName}}</td>
+            <td>{{this.homeCity}}</td>
+        </tr>       
+        {{/each}}
+    </tbody>
+</table>
