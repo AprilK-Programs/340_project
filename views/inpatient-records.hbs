@@ -25,9 +25,9 @@
             <td>{{this.[Pokemon Name]}}</td>
             <td>{{this.[Pokecenter Location]}}</td>
             {{! DELETE form }}
-            <form id='delete_record_form'>
-                <input type='hidden' name='delete_record_id' value='{{this.inPatientID}}' />
-                {{!-- <input type='hidden' name='delete_record_name' value='{{this.trainerFirstName}} {{this.trainerLastName}}' /> --}}
+            <form id='delete_record_form' method ='POST' action ='/inpatient-records/delete'>
+                <input type='hidden' name='delete_record_id' value='{{this.[inPatient ID]}}' />
+                <input type='hidden' name='delete_record_name' value='{{this.[Trainer Name]}}' /> 
                 <td>
                     <button type='submit'>
                         Delete
@@ -139,3 +139,11 @@
 
     <input type='submit' />
 </form>
+<h2>Reset Records</h2>
+    <form id='reset_record_form' method ='POST' action ='/inpatient-records/reset'> 
+        <td>
+            <button type='submit'>
+                Reset
+            </button>
+        </td>
+    </form>

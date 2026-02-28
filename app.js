@@ -106,7 +106,55 @@ app.get('/employees', async function (req, res) {
         );
     }
 });
+// DELETE ROUTES
+app.post('/inpatient-records/delete', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
 
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_delete_inPatient(?);`;
+        await db.query(query1, [data.delete_record_id]);
+
+        console.log(`DELETE inpatient-records. ID: ${data.delete_record_id} ` +
+            `Name: ${data.delete_record_name}`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/inpatient-records');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+//Restore 
+app.post('/inpatient-records/reset', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_reset_database();`;
+        await db.query(query1);
+
+        console.log(`Reset`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/inpatient-records');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
 // ########################################
 // ########## LISTENER
 
