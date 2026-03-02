@@ -1,4 +1,9 @@
-//some Code taken from exploration
+// some Code taken from exploration
+// Code taken/ adapted from exploration Web Application Technology
+// source: https://canvas.oregonstate.edu/courses/2031764/pages/exploration-web-application-technology-2?module_item_id=26243419
+// Accessed 2/23/26
+// Author Dr. Curry
+
 // ########################################
 // ########## SETUP
 
