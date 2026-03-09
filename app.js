@@ -136,6 +136,40 @@ app.post('/inpatient-records/delete', async function (req, res) {
         );
     }
 });
+
+// UPDATE ROUTES
+app.post('/inpatient-records/update', async function (req, res) {
+    console.log('test connection to route1');
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        console.log('test connection to route2');
+        const query1 = `CALL sp_update_inpatient(?, ?, ?, ?);`;
+        //const query2 = 
+        console.log('test sp execute');
+        await db.query(query1, [
+            data.update_record_id,
+            data.update_record_trainer,
+            data.update_record_pokemon,
+            data.update_record_center,
+        ]);
+
+        console.log('UPDATE inpatient-records. ID: ${data.update_record_id} ' 
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/inpatient-records');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
 //Restore 
 app.post('/inpatient-records/reset', async function (req, res) {
     try {

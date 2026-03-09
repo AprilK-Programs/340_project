@@ -92,12 +92,12 @@
 {{!-- have not figured out how to implement yet --}}
 <h2>Update a Record</h2>
 <h3>Currently Under Construction</h3>
-<form class='cuForm' id='update_record_form'>
+<form class='cuForm' id='update_record_form' method ='POST' action ='/inpatient-records/update'>
     <label for='update_record_id'>Record to Update: </label>
     <select name='update_record_id' id='update_record_id' required>
         <option value='NULL' selected>Select a Record</option>
         {{#each record}}
-        <option value='{{this.inPatientID}}' required>
+        <option value='{{this.[inPatient ID]}}' required>
             {{this.[inPatient ID]}}
         </option>
         {{/each}}
