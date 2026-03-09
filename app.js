@@ -160,6 +160,42 @@ app.post('/inpatient-records/reset', async function (req, res) {
         );
     }
 });
+
+// CREATE ROUTES
+app.post('/inpatient-records/create', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our queries
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_CreateInPatient(?, ?, ?, @new_id);`;
+
+        // Store ID of last inserted row
+        const [[[rows]]] = await db.query(query1, [
+            data.create_record_center,
+            data.create_record_trainer,
+            data.create_record_pokemon,
+        ]);
+
+        console.log(`CREATE inPatient Record. InPatientID: ${rows.new_id} ` +
+            `Name: ${data.create_record_pokemon} ` + `Trainer: ${data.create_record_trainer} `
+            + `Center: ${data.create_record_center}`
+        );
+
+        // Redirect the user to the updated webpage
+        res.redirect('/inpatient-records');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
+
+
 // ########################################
 // ########## LISTENER
 

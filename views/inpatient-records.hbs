@@ -47,13 +47,13 @@
 {{!-- have not figured out how to implement yet --}}
 <h2>Create a Record</h2>
 <h3>Currently Under Construction</h3>
-<form class='cuForm' id='create_record_form'>
+<form class='cuForm' id='create_record_form' method='POST' action='/inpatient-records/create'>
      <label for='create_record_trainer'>Trainer: </label>
      <select name='create_record_trainer' id='create_record_trainer'>
        
         <option value='NULL' selected>Select a Trainer</option>
         {{#each trainer}}
-        <option value='{{this.triainerID}}'  required>{{this.trainerID}}          
+        <option value='{{this.trainerID}}'  required>{{this.trainerID}}          
             -
             {{this.trainerFirstName}}
             {{this.trainerLastName}}
