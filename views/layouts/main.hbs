@@ -7,13 +7,18 @@
 </head>
 <body>
     <nav>
-        Navigation: 
         <a href="/">Home</a>
         <a href="/inpatient-records">InPatient Records</a>
         <a href="/trainers">Trainer Directory</a>
         <a href="/pokemon">Pokemon Directory</a>
         <a href="/pokecenter">PokeCenter Directory</a>
         <a href="/employees">Employee Directory</a>
+
+        <form id='reset_record_form' method ='POST' action ='/inpatient-records/reset'> 
+            <button type='submit'>
+                Reset Database
+            </button>
+        </form>
     </nav>
 
     {{{body}}}

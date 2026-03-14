@@ -15,8 +15,9 @@ th {background-color: #f2f2f2;}
 tr:nth-child(even) {background-color: #f9f9f9;}
 .cuForm { margin-left: 32px;}
 input, select { margin-bottom: 4px;margin-right: 12px;}
-nav {background-color: red; padding: 16px;}
+nav {background-color: red; padding: 16px; display: flex; justify-content: center;}
 a {margin-left: 16px;}
+button { margin-left: 16px;}
 .homepageDescription {margin-left: 32px;}
 footer {border: 1px solid black;
         padding: 5px;
